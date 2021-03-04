@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<p>
+				<div data-role="navbar" data-grid="a" >
+				<ul>
+					<li><a href="#"> 選單1</a></li>
+					<li><a href="#"> 選單2</a></li>
+					<li><a href="#"> 選單3</a></li>
+					<li><a href="#"> 選單4</a></li>
+				</ul>
+			</div>
+			</p>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" class="ui-btn-active ui-state-persist">首頁</a></li>
+					<li><a href="#product">產品</a></li>
+					<li><a href="#">型錄</a></li>
+					<li><a href="#">最新消息</a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<div data-role="page" id="product">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<a href="#shoe-1" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-1.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-1" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-1.jpg" alt="">
+				<P>產品名稱:鞋子1</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>
+
+			<a href="#shoe-2" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-2.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-2" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-2.jpg" alt="">
+				<P>產品名稱:鞋子2</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>	
+
+			<a href="#shoe-3" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-3.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-3" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-3.jpg" alt="">
+				<P>產品名稱:鞋子3</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>	
+
+			<a href="#shoe-4" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-4.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe4" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-4.jpg" alt="">
+				<P>產品名稱:鞋子4</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>		
+
+			<a href="#shoe-5" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-5.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-5" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-5.jpg" alt="">
+				<P>產品名稱:鞋子5</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>			
+
+			<a href="#shoe-6" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-6.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-6" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-6.jpg" alt="">
+				<P>產品名稱:鞋子6</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>			
+
+			<a href="#shoe-7" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-7.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-7" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-7.jpg" alt="">
+				<P>產品名稱:鞋子7</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>			
+
+			<a href="#shoe-8" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-8.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-8" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-8.jpg" alt="">
+				<P>產品名稱:鞋子8</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>			
+
+			<a href="#shoe-9" data-rel="popup" data-position-to="window">
+				<img src="images/shoe-9.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="shoe-9" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back"></a>
+				<img src="images/shoe-9.jpg" alt="">
+				<hr>
+				<P>產品名稱:鞋子9</P>
+				<P>原料:皮革&橡膠</P>
+				<P>價格:500</P>
+			</div>			
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home">首頁</a></li>
+					<li><a href="#product" class="ui-btn-active ui-state-persist" >產品</a></li>
+					<li><a href="#">型錄</a></li>
+					<li><a href="#">最新消息</a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

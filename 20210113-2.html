@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/listview-grid.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		// home
+		$( document ).on( "pagecreate", "#home", function() {
+			$( document ).on( "swipeleft swiperight", "#home", function( e ) {
+				if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+					if ( e.type === "swipeleft" ) {
+						$( "#right-panel" ).panel( "open" );
+					} else if ( e.type === "swiperight" ) {
+						$( "#left-panel" ).panel( "open" );
+					}
+				}
+			});
+		});
+    </script>
+    <script>
+    	// 註冊
+		$( document ).on( "pagecreate", "#login", function() {
+			$( document ).on( "swipeleft swiperight", "#login", function( e ) {
+				if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+					if ( e.type === "swipeleft" ) {
+						$( "#right-panel2" ).panel( "open" );
+					} else if ( e.type === "swiperight" ) {
+						$( "#left-panel2" ).panel( "open" );
+					}
+				}
+			});
+		});
+    </script>
+    <script>
+    	// 最新消息
+		$( document ).on( "pagecreate", "#info", function() {
+			$( document ).on( "swipeleft swiperight", "#info", function( e ) {
+				if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+					if ( e.type === "swipeleft" ) {
+						$( "#right-panel3" ).panel( "open" );
+					} else if ( e.type === "swiperight" ) {
+						$( "#left-panel3" ).panel( "open" );
+					}
+				}
+			});
+		});
+    </script>
+    <script>
+		var flag_username = false ;
+		var flag_password = false ;
+		$(function(){
+			//OK按鍵
+			$("#ok_btn").bind("click", function(){
+				if(flag_username && flag_password ){
+
+					$("#showmsg").html("<p>帳號:" +$("#username").val() + "</p><p>密碼:"  + $("#password").val() + "</p>" );
+				}else{
+					alert("錯誤請修正輸入")
+				}
+			});
+
+			// username監聽
+			$("#username").bind("input propertychange",function(){
+
+				if($("#username").val().length > 2 && $("#username").val().length <9){
+					//符合字數條件
+					$("#error_username").html("");
+					flag_username = true ;
+				}else{
+					//不符合字數條件
+					$("#error_username").html("帳號3~8個字!");
+					$("#error_username").css("color", "red");
+					flag_username = false ;
+				}
+
+				if($("#username").val().length == 0 ){
+					$("#error_username").html("");
+				}
+			});
+
+			//password 監聽
+			$("#password").bind("input propertychange",function(){
+				if($("#password").val().length >7 && $("#password").val().length<16  ){
+					$("#error_password").html("");
+					flag_password = true ;
+				}else{
+					$("#error_password").html("密碼7~15個字");
+					$("#error_password").css("color","red");
+					flag_password = false ;
+				}
+			});
+
+			//首頁的登入判斷
+			$("#home_login_btn").bind("click", function(){
+				var login_username ;
+				var login_password ;
+				login_username=$("#login_username").val();
+				login_password=$("#login_password").val();
+
+				if(login_username=="admin" && login_password=="123456" ){
+					alert("允許登入！")
+				}else{
+					alert("帳號或密碼錯鋘！")
+				}
+			});
+
+			//註冊的登入判斷
+			$("#login_login_btn2").bind("click", function(){
+				var login_username2 ;
+				var login_password2 ;
+				login_username2=$("#login_username2").val();
+				login_password2=$("#login_password2").val();
+
+				if(login_username=="admin" && login_password=="123456" ){
+					alert("允許登入！")
+				}else{
+					alert("帳號或密碼錯鋘！")
+				}
+			});
+			//info的登入判斷
+
+		});
+	</script>	
+</head>
+<body>
+	<!-- ---home -->
+	<div data-role="page" id="home">
+		<div data-role="panel" id="left-panel">
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider" data-theme="b" ><a href="">主選單</a></li>
+				<li data-icon="home"><a href="#home">首頁</a></li>
+				<li data-icon="grid"><a href="#login">註冊</a></li>
+				<li data-icon="info"><a href="#info">最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel" data-position="right">
+			<label for=""><h3><b>帳號登入</b></h3></label>
+			<div data-role="fieldcontain">
+				<label for="login_username">帳號</label>
+				<input type="text" name="login_username" id="login_username" placeholder="請輸入帳號.." />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="login_password">密碼</label>
+				<input type="password" name="login_password" id="login_password" placeholder="請輸入.." />
+			</div>
+			<a href="#" data-role="button" data-theme="b" data-icon="user" id="home_login_btn">登入</a>
+		</div>
+
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" data-icon="star">選項1</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" data-icon="star">選項2</a>
+				</div>
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" data-icon="star">選項3</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" data-icon="star">選項4</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">首頁</a></li>
+					<li><a href="#login" data-icon="user">註冊</a></li>
+					<li><a href="#info" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<!-- ---註冊 -->
+	<div data-role="page" id="login">
+		<div data-role="panel" id="left-panel2">
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider" data-theme="b" ><a href="">主選單</a></li>
+				<li data-icon="home"><a href="#home">首頁</a></li>
+				<li data-icon="grid"><a href="#login">註冊</a></li>
+				<li data-icon="info"><a href="#info">最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel2" data-position="right">
+			<label for=""><h3><b>帳號登入</b></h3></label>
+			<div data-role="fieldcontain">
+				<label for="login_username2">帳號</label>
+				<input type="text" name="login_username2" id="login_username2" placeholder="請輸入帳號.." />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="login_password2">密碼</label>
+				<input type="password" name="login_password2" id="login_password2" placeholder="請輸入.." />
+			</div>
+			<a href="#" data-role="button" data-theme="b" data-icon="user" id="login_login_btn2">登入</a>
+		</div>
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" data-theme="a" data-icon="back" data-iconpos="notext" >Back</a>
+			<h1>註冊</h1>
+		</div>
+		<div role="main" class="ui-content">
+
+			<div data-role="fieldcontain">
+				<label for="username">帳號</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號.." />
+			</div>
+			<div id="error_username"></div>
+
+			<div data-role="fieldcontain">
+				<label for="password">密碼</label>
+				<input type="password" name="password" id="password" placeholder="請輸入.." />
+			</div>
+			<div id="error_password"></div>
+
+			<div data-role="fieldcontain">
+				<label for="repassword">確認密碼</label>
+				<input type="password" name="repassword" id="repassword" placeholder="請輸入.." />
+			</div>
+			<div id="reerror_password"></div>
+
+			<div data-role="fieldcontain">
+				<label for="bday">生日</label>
+				<input type="date" name="bday" id="bday">
+			</div>
+
+			<div data-role="fieldcontain">
+				<label for="height">訂購數量</label>
+				<input type="range" name="height" id="number" value="0" min="0" max="20" step="1">
+			</div>
+			<div id="error_number"></div>
+
+			<div data-role="fieldcontain">
+				<label for="sexy">性別:</label>
+				<select name="sexy" id="message" data-role="slider">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>	
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>興趣(可複選)</legend>
+					<input type="checkbox" name="interest" id="interest01">
+					<label for="interest01">球類</label>
+					<input type="checkbox" name="interest" id="interest02">
+					<label for="interest02">閱讀</label>
+					<input type="checkbox" name="interest" id="interest03">
+					<label for="interest03">爬山</label>
+					<input type="checkbox" name="interest" id="interest04">
+					<label for="interest04">游泳</label>
+					<input type="checkbox" name="interest" id="interest05">
+					<label for="interest05">其它</label>
+				</fieldset>		
+			</div>
+			<div data-role="fieldcontaine">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>血型</legend>
+					<input type="radio" name="blood" id="blood01" value="A">
+					<label for="blood01">A型</label>
+					<input type="radio" name="blood" id="blood02" value="B">
+					<label for="blood02">B型</label>
+					<input type="radio" name="blood" id="blood03" value="O">
+					<label for="blood03">O型</label>
+					<input type="radio" name="blood" id="blood04" value="AB">
+					<label for="blood04">AB型</label>
+				</fieldset>	
+			</div>
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" data-icon="delete">取消</a></div>
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="ok_btn" data-icon="check">確認</a></div>
+			</div>
+			<div id="showmsg"></div>
+
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" >首頁</a></li>
+					<li><a href="#login" data-icon="user" class="ui-btn-active ui-state-persist">註冊</a></li>
+					<li><a href="#info" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+	<!-- ---最新消息 -->
+	<div data-role="page" id="info" class="my-page" data-theme="a">
+		<div data-role="panel" id="left-panel3">
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider" data-theme="b" ><a href="">主選單</a></li>
+				<li data-icon="home"><a href="#home">首頁</a></li>
+				<li data-icon="grid"><a href="#login">註冊</a></li>
+				<li data-icon="info"><a href="#info">最新消息</a></li>
+			</ul>
+		</div>
+		<div data-role="panel" id="right-panel3" data-position="right">
+			<label for=""><h3><b>帳號登入</b></h3></label>
+			<div data-role="fieldcontain">
+				<label for="login_username3">帳號</label>
+				<input type="text" name="login_username3" id="login_username3" placeholder="請輸入帳號.." />
+			</div>
+			<div data-role="fieldcontain">
+				<label for="login_password3">密碼</label>
+				<input type="password" name="login_password3" id="login_password3" placeholder="請輸入.." />
+			</div>
+			<a href="#" data-role="button" data-theme="b" data-icon="user" id="info_login_btn3">登入</a>
+		</div>
+
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" data-theme="a" data-icon="back" data-iconpos="notext">Back</a>
+			<h1>最新消息</h1>
+			<a href="#home" data-theme="a" data-icon="home" data-iconpos="notext">Home</a>
+		</div>
+		<div role="main" class="ui-content">
+			<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="請輸入:" data-theme="b">
+				<li>
+					<a href="#">
+						<img src="images/shoe-1.jpg" class="ui-li-thumb" alt="">
+						<h2>標題:以及放棄鼓勵腦袋昨日</h2>
+						<p>觀點不肯始終語文公里公告，權利案例是否打算漢化版建立汽車股東過來夢，。</p>
+						<p class="ui-li-aside">最新消息</p>
+					</a>
+					
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/shoe-2.jpg" class="ui-li-thumb" alt="">
+						<h2>標題:以及放棄鼓勵腦袋昨日</h2>
+						<p>觀點不肯始終語文公里公告，權利案例是否打算漢化版建立汽車股東過來夢，。</p>
+						<p class="ui-li-aside">最新消息</p>
+					</a>
+					
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/shoe-3.jpg" class="ui-li-thumb" alt="">
+						<h2>標題:以及放棄鼓勵腦袋昨日</h2>
+						<p>觀點不肯始終語文公里公告，權利案例是否打算漢化版建立汽車股東過來夢，。</p>
+						<p class="ui-li-aside">最新消息</p>
+					</a>
+					
+				</li>
+			</ul>
+	
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" >首頁</a></li>
+					<li><a href="#login" data-icon="user" >註冊</a></li>
+					<li><a href="#info" data-icon="info" class="ui-btn-active ui-state-persist">最新消息</a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var flag_pname = false ;
+		var flag_price = false ;
+		var flag_qty = false ;
+
+		$(function(){
+			$("#btn_ok").bind("click",function(){
+				if(flag_pname){
+					console.log($("#pname").val());
+					console.log($("#price").val());
+					console.log($("#qty").val());
+					$.ajax({
+						type: "POST",
+						url: "20210217-insert.php",
+						data: {name:$("#pname").val(), price:$("#price").val(), qty:$("#qty").val()},
+						dataType: "json",
+						success: function(data){
+							if(data.state){
+								alert(data.message);
+								location.href="20210217-1a.html";
+							}else{
+								alert(data.message);
+							}
+							$("#pname").val("");
+						},
+						error: function(){
+							alert("error_20210217-insert.php");
+						}
+					});
+				}else{
+					alert("欄位資料有誤,請修正!");
+				}
+			});
+
+			$("#pname").bind("input propertychange",function(){
+				if($(this).val().length > 1){
+					$("#error_pname").html("");
+					$.ajax({
+						type:"POST",
+						url:"20210224-checkinsert.php",
+						data: {name:$("#pname").val()},
+						dataType:"json",
+						success: function(data){
+							console.log(data);
+							console.log(data.state);
+							if(data.state){
+								$("#error_pname").html("");
+								flag_pname = true ;
+							}else{
+								//欄位資料已經存在
+								$("#error_pname").html(data.message);
+			 					$("#error_pname").css("color", "red");
+			 					flag_pname = false ;
+							}
+						},
+						error: function(){
+							alert("error_20210224-checkinsert.php");
+						}
+					});
+
+					//flag_pname = true ;
+				}else{
+					$("#error_pname").html("產品名稱,不得少於2個字");
+			 		$("#error_pname").css("color", "red");
+			 		flag_pname = false ;
+				}
+
+			});
+		})
+
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="pname">品名</label>
+				<input type="text" name="pname" id="pname" placeholder="請輸入產品名稱,不得少於2個字" />
+			</div>
+			<div id="error_pname"></div>
+			<div data-role="fieldcontain">
+				<label for="price">價格(元)</label>
+				<input type="range" name="price" id="price" value="100" min="10" max="100000" step="1">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="qty">數量(個)</label>
+				<input type="range" name="qty" id="qty" value="1" min="1" max="99" step="1">
+			</div>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b">取消</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" id="btn_ok">確認</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+</body>
+</html>

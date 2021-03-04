@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$(function(){
+			$("body #B1").bind("click",function(){
+				//alert($(this).data("a"));
+				console.log($(this).data("a"));
+				console.log($(this).data("b"));
+				console.log($(this).val());
+			});
+
+		});
+	
+	</script>
+</head>
+<body>
+	<input type="button" id="B1" data-a="AA" data-b="AA2" value="A">
+	<input type="button" id="B1" data-a="BB" data-b="BB2" value="B">
+	<table>
+		<tr id="TT1">
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</body>
+</html>

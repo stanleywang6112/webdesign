@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var flag_username = false ;
+		var flag_password = false ;
+		var flag_interest = false ;
+		var flag_edu = false;
+
+		$(function(){
+			//OK按鍵
+			$("#ok_btn").bind("click", function(){
+
+				//興趣是否有填寫
+				var myinterest=[];
+				$.each($("input[name='interest']:checked"),function(){
+					myinterest.push($(this).val());
+					//console.log (myinterest.join());
+					if(myinterest.length>0){
+						flag_interest = true;
+					}else{
+						flag_interest = false;
+					}
+				});
+
+				//學歷是有有填寫
+				if($("#edu").val().length>0){
+					flag_edu=true;
+				}else{
+					flag_edu=false;
+				}
+
+				//OK按鈕
+				if(flag_username && flag_password && flag_interest && flag_edu){
+					var myblood=[];
+					$.each($("input[name='blood']:checked"),function(){
+						myblood.push($(this).val());
+					});
+
+					$("#showmsg").html("<p>帳號:" +$("#username").val() + "</p><p>密碼:"  + $("#password").val() + "</p><p>優惠訊息:" + $("#message").val() + "通知</p><p>學歷:" + $("#edu").val() + "</p><p>興趣:" + myinterest.join("_") + "</p><p>血型:" + myblood + "</p>" );
+				}else{
+					alert("錯誤請修正輸入")
+				}
+				
+			});
+
+			// username監聽
+			$("#username").bind("input propertychange",function(){
+
+				if($("#username").val().length > 2 && $("#username").val().length <9){
+					//符合字數條件
+					$("#error_username").html("");
+					flag_username = true ;
+				}else{
+					//不符合字數條件
+					$("#error_username").html("帳號3~8個字!");
+					$("#error_username").css("color", "red");
+					flag_username = false ;
+				}
+
+				if($("#username").val().length == 0 ){
+					$("#error_username").html("");
+				}
+			});
+
+			//password 監聽
+			$("#password").bind("input propertychange",function(){
+				if($("#password").val().length >7 && $("#password").val().length<16  ){
+					$("#error_password").html("");
+					flag_password = true ;
+				}else{
+					$("#error_password").html("密碼7~15個字");
+					$("#error_password").css("color","red");
+					flag_password = false ;
+				}
+			});
+
+
+		});
+	</script>	
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="username">帳號</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號.." />
+			</div>
+			<div id="error_username"></div>
+
+			<div data-role="fieldcontain">
+				<label for="password">密碼</label>
+				<input type="password" name="password" id="password" placeholder="請輸入密碼.." />
+			</div>
+			<div id="error_password"></div>
+
+			<div data-role="fieldcontain">
+				<label for="message">允許通知:</label>
+				<select name="message" id="message" data-role="slider">
+					<option value="接受">接受</option>
+					<option value="不接受">不接受</option>
+				</select>	
+			</div>
+
+			<div data-role="fieldcontain">
+				<label for="edu">最高學歷:</label>
+				<select name="edu" id="edu" >
+					<option value="">--新選擇--</option>
+					<option value="碩、博士">碩、博士</option>
+					<option value="大學、專科">大學、專科</option>
+					<option value="高中職">高中職</option>
+				</select>
+			</div>
+			<div id="error_edu"></div>
+
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>興趣(可複選)</legend>
+					<input type="checkbox" name="interest" id="interest01" value="球類">
+					<label for="interest01">球類</label>
+					<input type="checkbox" name="interest" id="interest02" value="跑步">
+					<label for="interest02">跑步</label>
+					<input type="checkbox" name="interest" id="interest03" value="散步">
+					<label for="interest03">散步</label>
+					<input type="checkbox" name="interest" id="interest04" value="游泳">
+					<label for="interest04">游泳</label>
+					<input type="checkbox" name="interest" id="interest05" value="其它">
+					<label for="interest05">其它</label>
+				</fieldset>		
+			</div>
+
+			<div data-role="fieldcontaine">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+					<legend>血型</legend>
+					<input type="radio" name="blood" id="blood01" value="A">
+					<label for="blood01">A型</label>
+					<input type="radio" name="blood" id="blood02" value="B">
+					<label for="blood02">B型</label>
+					<input type="radio" name="blood" id="blood03" value="O">
+					<label for="blood03">O型</label>
+					<input type="radio" name="blood" id="blood04" value="AB">
+					<label for="blood04">AB型</label>
+				</fieldset>	
+			</div>
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="#" data-role="button" data-theme="b" data-icon="delete">取消</a></div>
+				<div class="ui-block-b"><a href="#" data-role="button" data-theme="b" id="ok_btn" data-icon="check">確認</a></div>
+			</div>
+			<div id="showmsg"></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+</body>
+</html>

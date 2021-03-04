@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		$( document ).on( "pagecreate", "#home", function() {
+			$( document ).on( "swipeleft swiperight", "#home", function( e ) {
+				// We check if there is no open panel on the page because otherwise
+				// a swipe to close the left panel would also open the right panel (and v.v.).
+				// We do this by checking the data that the framework stores on the page element (panel: open).
+				// Panel 滑動的js程式
+				// 第1行:監測當home頁面產生時執行function()
+				// 第2行:監測home頁面如果有產生手指滑動頁面左右方向時執行function(e)
+				// 第3~7行 判斷panel是否已開啟,以及偵測手指左或右的滑動方向去開啟相對應的側邊Panel頁面(滑向右邊就開左邊panel,滑向左方就開右邊panel)
+				if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+					if ( e.type === "swipeleft" ) {
+						$( "#right-panel" ).panel( "open" );
+					} else if ( e.type === "swiperight" ) {
+						$( "#left-panel" ).panel( "open" );
+					}
+				}
+			});
+		});
+    </script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="panel" id="left-panel" data-position="left" data-display="push">
+			<h1>這是一個pane-1</h1>
+		</div>
+		<div data-role="panel" id="left-panel2" data-position="left" data-display="reveal">
+			<h1>這是一個left-panel-2</h1>
+		</div>
+		<div data-role="panel" id="right-panel" data-position="right" data-display="overlay">
+			<h1>這是一個panel-2</h1>
+			<a href="#left-panel" data-role="button" data-theme="a">按鈕push</a>
+		</div>
+		<div data-role="panel" id="reveal-panel" data-position="right" data-display="reveal">
+			<h1>這是一個panel-2</h1>
+		</div>
+
+
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>頁首</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<a href="#left-panel" data-role="button" data-theme="a">按鈕push</a>
+			<a href="#left-panel2" data-role="button" data-theme="a">按鈕L2</a>
+			<a href="#right-panel" data-role="button" data-theme="a">按鈕overlay</a>
+			<a href="#reveal-panel" data-role="button" data-theme="a">按鈕reveal</a>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+</body>
+</html>

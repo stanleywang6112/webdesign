@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<!-- Home 首頁 -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>Home</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<p>
+				<a href="#info" data-role="button" data-theme="b" data-transition="pop">最新消息</a>
+				<a href="#product" data-role="button" data-theme="b" data-transition="turn">型錄</a>
+				<a href="#contact" data-role="button" data-theme="b" data-rel="dialog">連絡資訊</a>
+			</p>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>Footer</h1>
+		</div>
+	</div>
+	<!-- 最新消息 -->
+	<div data-role="page" id="info">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-role="button" data-theme="a" data-rel="back">Back</a>
+			<h1>最新消息</h1>
+		</div>
+		<div data-rold="main" class="ui-content">
+			<h3>
+				<ol type="1">	
+					<li>全館通通打3折。</li>
+					<li>買一送一,臉書按讚再多送一雙。</li>
+					<li>不怕您比價,買貴退差價。</li>
+				</ol>
+			</h3>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>Footer</h1>
+		</div>
+	</div>
+	<!-- 型錄 -->
+	<div data-role="page" id="product">
+		<div data-role="header" data-position="fixed" data-theme="b" data-fullscreen="true">
+			<a href="#" data-role="button" data-theme="a" data-rel="back">Back</a>
+			<h1>型錄</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<table border="0" cellspacing="10px" cellpadding="0">
+				<tr><td colspan="3" height="50px"></td></tr>
+				<tr align="center">
+					<td>
+						<a href="#prd01" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-1.jpg" width="90%" alt=""><br>淑女休閒鞋
+						</a>
+						<div data-role="popup" id="prd01" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-1.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 淑女休閒鞋</p>
+							<p>價格: 200</p>
+							<p>簡介: 穿了變美麗</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd02" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-2.jpg" width="90%" alt=""><br>舒適涼鞋
+						</a>
+						<div data-role="popup" id="prd02" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-2.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 舒適涼鞋</p>
+							<p>價格: 400</p>
+							<p>簡介: 穿了變有氣資</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd03" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-3.jpg" width="90%" alt=""><br>休閒包鞋
+						</a>
+						<div data-role="popup" id="prd03" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-3.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 休閒包鞋</p>
+							<p>價格: 600</p>
+							<p>簡介: 穿了變漂亮</p>
+						</div>
+					</td>
+				</tr>
+				<tr align="center">
+					<td>
+						<a href="#prd04" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-4.jpg" width="90%" alt=""><br>壓馬路鞋
+						</a>
+						<div data-role="popup" id="prd04" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-4.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 壓馬路鞋</p>
+							<p>價格: 350</p>
+							<p>簡介: 穿了很會逛街</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd05" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-5.jpg" width="90%" alt=""><br>健走鞋
+						</a>
+						<div data-role="popup" id="prd05" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-5.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 健走鞋</p>
+							<p>價格: 190</p>
+							<p>簡介: 穿了變健康</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd06" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-6.jpg" width="90%" alt=""><br>老爹鞋
+						</a>
+						<div data-role="popup" id="prd06" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-6.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 老爹鞋</p>
+							<p>價格: 550</p>
+							<p>簡介: 穿了變老爹</p>
+						</div>
+					</td>
+				</tr>
+				<tr align="center">
+					<td>
+						<a href="#prd07" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-7.jpg" width="90%" alt=""><br>酷炫休閒鞋
+						</a>
+						<div data-role="popup" id="prd07" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-7.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 酷炫休閒鞋</p>
+							<p>價格: 630</p>
+							<p>簡介: 穿了變很酷</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd08" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-8.jpg" width="90%" alt=""><br>舒適運動鞋
+						</a>
+						<div data-role="popup" id="prd08" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-8.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 舒適運動鞋</p>
+							<p>價格: 400</p>
+							<p>簡介: 穿了愛運動</p>
+						</div>
+					</td>
+					<td>
+						<a href="#prd09" data-rel="popup" data-position-to="window">
+							<img src="images/shoe-9.jpg" width="90%" alt=""><br>跑路鞋
+						</a>
+						<div data-role="popup" id="prd09" data-dismissible="false">
+							<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+							<p><img src="images/shoe-9.jpg" width="90%" alt=""></p>
+							<hr>
+							<p>品名: 跑路鞋</p>
+							<p>價格: 700</p>
+							<p>簡介: 穿了很會跑路</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>Footer</h1>
+		</div>
+	</div>
+	<!-- 連絡資訊 -->
+	<div data-role="page" id="contact">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>連絡資訊</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<h3>
+				<p>地址: 台中市工業區一路100號</p>
+				<P>電話: 04-22567896</P>
+				<P>Email: wrcc666@gmail.com</P>
+			</h3>
+		</div>
+	</div>
+</body>
+</html>

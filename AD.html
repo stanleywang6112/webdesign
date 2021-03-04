@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AD</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<style>
+		.pimg {
+
+			width: 400px;
+			height: 350px;
+			margin-top: 30px;
+			margin-bottom: 0px;
+			margin-left: auto;
+			margin-right: auto;
+			background-image: url(./images/mb01.jpg);
+			background-position: center center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			border: 5px solid #ccc;
+			box-shadow: 4px 4px 4px 4px #aaa;
+			transition: .5s background-image ease
+		}
+		.ptext {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #0000ff;
+		}
+	</style>
+	<script>
+		var pdindex=0;
+		var pdImgSrc,pdcurBook;
+
+		var arBKSrc=new Array("mb01.jpg","mb02.jpg","mb03.jpg","mb04.jpg","mb05.jpg","mb06.jpg","mb07.jpg","mb08.jpg","mb09.jpg","mb10.jpg",);
+
+		var arBKName=new Array("HTC One A","HTC New HC","HTC BUTTSSA","HTC CUSS one","HTC YY-1s","HTC TNY 2s","HTC QQs Ps","HTC GG one","HTC Vivi two","HTC Rain Top");
+
+		$(function(){
+			setInterval(function(){
+				shownext();
+			},2000)
+		});
+
+		function shownext() {
+			pdindex ++;
+			if(pdindex>9){
+				pdindex=0
+			}
+			pdImgSrc="url(./images/" + arBKSrc[pdindex] +")";
+			pdcurBook=arBKName[pdindex];
+			$('#pd_img').css("background-image", pdImgSrc); 
+			$("#pd_text").text(pdcurBook);
+		}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>AD</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div class="pimg" id="pd_img"></div>
+			<p class="ptext" id="pd_text">HTC One A</p>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<!-- 首頁 -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b" >
+			<h1>Home</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<p>
+			<div data-role="navbar" data-grid="a" >
+				<ul>
+					<li><a href="#"> 選單1</a></li>
+					<li><a href="#"> 選單2</a></li>
+					<li><a href="#"> 選單3</a></li>
+					<li><a href="#"> 選單4</a></li>
+				</ul>
+			</div>
+			<a href="#product" data-role="button">to p</a>	
+			</p>			
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" class="ui-btn-active">首頁</a></li>
+					<li><a href="#product">產品</a></li>
+					<li><a href="#">型錄</a></li>
+					<li><a href="#">最新消息</a></li>
+				</ul>
+			</div>		
+		</div>
+	<!-- 產品 -->
+		<div data-role="page" id="product">
+			<div data-role="header" id="home" data-position="fixed" data-theme="b">
+				<h1>產品</h1>
+			</div>
+			<div role="main" class="ui-content">
+					<p>產品</p>
+			</div>
+			<div data-role="footer" data-position="fixed" data-theme="b">
+					<h1>lll</h1>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>

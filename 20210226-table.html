@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var id;
+		$(function(){
+			$.ajax({
+				type:"GET",
+				url:"20210217-1.php",
+				async:false,
+				dataType:"json",
+				success:showdata,
+				error:function(){
+					alert("error-20210217-1.php");
+				}
+			});
+
+			$("#product_list #delect_btn").bind("click",function(){
+				console.log($(this).data("id"));
+				if(confirm("確定要刪除ID:"+$(this).data("id")+"嗎?")){
+					$.ajax({
+						type:"POST",
+						url:"20210226-delete.php",
+						data: {id:$(this).data("id")},
+						dataType:"json",
+						success:function(data){
+							if(data.state){
+								alert(data.message);
+								location.href="20210226-table.html";
+							}else{
+								alert(data.message);
+							}
+						},
+						error:function(){
+							alert("error_20210226-delete.php");
+						}
+					});
+				}
+			});
+
+			$("#product_list #update_btn").bind("click",function(){
+				$.mobile.changePage( "#product_edit", { transition: "slideup", changeHash: false });
+				// console.log($(this).data("id"));
+				// console.log($(this).data("name"));
+				// console.log($(this).data("price"));
+				// console.log($(this).data("qty"));
+				id = $(this).data("id")
+				$("#pname").val($(this).data("name"));
+				$("#price").val($(this).data("price"));
+				$("#qty").val($(this).data("qty"));
+
+				$("#price").slider("refresh");
+				$("#qty").slider("refresh");
+			});
+
+			$("#product_update_btn").bind("click",function(){
+				// console.log(id);
+				// console.log($("#pname").val());
+				// console.log($("#price").val());
+				// console.log($("#qty").val());
+				$.ajax({
+					type:"POST",
+					url:"20210303-update_db.php",
+					data: {id:id,price:$("#price").val(),qty:$("#qty").val()},
+					dataType:"json",
+					success:function(data){
+						if(data.state){
+							alert(data.message);
+							location.href="20210226-table.html";
+						}else{
+							alert(data.message);
+						}
+					},
+					error:function(){
+						alert("error_20210303-update_db.php");
+					}
+				});
+
+			});
+
+			$("#product_updateCancel_btn").bind("click",function(){
+				$.mobile.changePage( "#home", { transition: "slidedown", changeHash: false });
+			});
+			
+
+		});
+		function showdata(data){
+			console.log(data);
+			$("#product_list").empty();
+			for(var i=0;i<data.length;i++){
+				var strHTML='<tr><td>'+ data[i]["ID"] +'</td><td>'+ data[i]["Name"] +'</td><td>'+ data[i]["Price"] +'</td><td>'+ data[i]["Qty"] +'</td><td>'+ data[i]["Create_at"] +'</td><td><button id="update_btn" data-id="'+ data[i]["ID"] +'" data-name="'+ data[i]["Name"] +'" data-price="'+ data[i]["Price"] +'" data-qty="'+ data[i]["Qty"] +'">更新</button><button data-id="'+ data[i]["ID"] +'" id="delect_btn">刪除</button></td></tr>'
+				$("#product_list").append(strHTML);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>產品資料</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<table data-role="table" id="temp-table" data-mode="reflow" class="ui-responsive table-stroke">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>品名</th>
+						<th>價格</th>
+						<th>數量</th>
+						<th>建立日期</th>
+						<th>#</th>
+					</tr>
+				</thead>
+				<tbody id="product_list">
+					<tr>
+						<td>1</td>
+						<td>電腦</td>
+						<td>29000</td>
+						<td>3</td>
+						<td>2021/02/22</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>電腦2</td>
+						<td>29000</td>
+						<td>3</td>
+						<td>2021/02/22</td>
+						<td><button>更新</button><button>刪除</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+	<div data-role="page" id="product_edit">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>資料更新</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="pname">品名</label>
+				<input type="text" name="pname" id="pname" placeholder="請輸入產品名稱,不得少於2個字" / disabled>
+			</div>
+			<div id="error_pname"></div>
+			<div data-role="fieldcontain">
+				<label for="price">價格(元)</label>
+				<input type="range" name="price" id="price" value="100" min="10" max="100000" step="1">
+			</div>
+			<div data-role="fieldcontain">
+				<label for="qty">數量(個)</label>
+				<input type="range" name="qty" id="qty" value="1" min="1" max="99" step="1">
+			</div>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" id="product_updateCancel_btn">取消</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" id="product_update_btn">確認</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+</body>
+</html>

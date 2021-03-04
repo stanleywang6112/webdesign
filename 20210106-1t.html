@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script>
+		var flag_username = false;
+		var flag_nickname = false;
+		var flag_password = false;
+		var flag_email = false;
+		var flag_number = false;
+		var flag_message = false;
+
+		$(function(){
+			//按鈕監聽
+			$("#ok_btn").bind("click", function(){
+				if(flag_username == true && flag_nickname == true && flag_password == true && flag_email == true && flag_number == true && flag_message == true){
+
+					var height = $("#height").val()/100;
+					var weight = $("#weight").val();
+
+					var bmi = weight/(height*height);
+					var bmi_message;
+
+					if(bmi<18.5){
+						bmi_message = "體重過輕";
+					}else if(bmi >= 18.5 && bmi < 24){
+						bmi_message = "健康體位";
+					}else if(bmi > 24){
+						bmi_message = "體位異常";
+					}
+
+					$("#showmsg").html("<p>帳號: "+$("#username").val()+"</p><p>暱稱: "+$("#nickname").val()+"</p><p>密碼: "+$("#password").val()+"</p><p>Email: "+$("#email").val()+"</p><p>數量: "+$("#number").val()+"</p><p>意見欄: "+$("#message").val()+"</p><p>BMI: "+bmi+"("+bmi_message+")</p>");
+				}else{
+					alert("欄位錯誤;請修正!!!");
+				}
+				
+			});
+
+			//即時監聽username
+			$("#username").bind("input propertychange", function(){
+				console.log($("#username").val().length);
+				if($("#username").val().length > 2 && $("#username").val().length < 9){
+					//符合字數條件
+					$("#error_username").html("");
+					flag_username = true;
+				}else{
+					//不符合字數條件
+					$("#error_username").html("帳號3~8個字!");
+					$("#error_username").css("color", "red");
+					flag_username = false;
+				}
+			});
+
+			//即時監聽nickname
+			$("#nickname").bind("input propertychange", function(){
+				if($("#nickname").val().length > 2 && $("#nickname").val().length < 6){
+					//符合字數條件
+					$("#error_nickname").html("");
+					flag_nickname = true;
+				}else{
+					//不符合字數條件
+					$("#error_nickname").html("暱稱字數3~5個字!");
+					$("#error_nickname").css("color", "red");
+					flag_nickname = false;
+				}
+			});
+
+			//即時監聽password
+			$("#password").bind("input propertychange", function(){
+				if($("#password").val().length > 7){
+					//符合字數條件
+					$("#error_password").html("");
+					flag_password = true;
+				}else{
+					//不符合字數條件
+					$("#error_password").html("密碼字數大於8個字!");
+					$("#error_password").css("color", "red");
+					flag_password = false;
+				}
+			});
+
+			//即時監聽email
+			$("#email").bind("input propertychange", function(){
+				if($("#email").val().length > 4 && $("#email").val().length < 21){
+					//符合字數條件
+					$("#error_email").html("");
+					flag_email = true;
+				}else{
+					//不符合字數條件
+					$("#error_email").html("email字數5~20個字!");
+					$("#error_email").css("color", "red");
+					flag_email = false;
+				}
+			});
+
+			//即時監聽number
+			$("#number").bind("input propertychange", function(){
+				if($("#number").val() > 0){
+					//符合字數條件
+					$("#error_number").html("");
+					flag_number = true;
+				}else{
+					//不符合字數條件
+					$("#error_number").html("數字不得小於0!");
+					$("#error_number").css("color", "red");
+					flag_number = false;
+				}
+			});
+
+			//即時監聽message
+			$("#message").bind("input propertychange", function(){
+				if($("#message").val().length > 0 && $("#message").val().length < 11){
+					//符合字數條件
+					$("#error_message").html("");
+					flag_message = true;
+				}else{
+					//不符合字數條件
+					$("#error_message").html("數字1~10!");
+					$("#error_message").css("color", "red");
+					flag_message = false;
+				}
+			});
+		});
+
+	</script>
+</head>
+<body>
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="fieldcontain">
+				<label for="username">帳號</label>
+				<input type="text" name="username" id="username" placeholder="請輸入帳號, 不得少於3個字!">
+			</div>
+			<div id="error_username"></div>
+
+			<div data-role="fieldcontain">
+				<label for="nickname">暱稱</label>
+				<input type="text" name="nickname" id="nickname" placeholder="請輸入暱稱, 不得少於3個字!">
+			</div>
+			<div id="error_nickname"></div>	
+
+			<div data-role="fieldcontain">
+				<label for="password">密碼</label>
+				<input type="password" name="password" id="password">
+			</div>
+			<div id="error_password"></div>
+
+			<div data-role="fieldcontain">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+			</div>
+			<div id="error_email"></div>
+
+			<div data-role="fieldcontain">
+				<label for="number">數量</label>
+				<input type="number" name="number" id="number" min="0" max="10">
+			</div>
+			<div id="error_number"></div>
+
+			<div data-role="fieldcontain">
+				<label for="message">意見欄</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			</div>
+			<div id="error_message"></div>
+
+			<div data-role="fieldcontain">
+				<label for="bday">生日</label>
+				<input type="date" name="bday" id="bday">
+			</div>
+
+			<div data-role="fieldcontain">
+				<label for="height">身高(公分)</label>
+				<input type="range" name="height" id="height" value="160" min="80" max="200" step="1">
+			</div>
+
+			<div data-role="fieldcontain">
+				<label for="weight">體重(公斤)</label>
+				<input type="range" name="weight" id="weight" value="60" min="40" max="120" step="1">
+			</div>
+
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" data-icon="delete">取消</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" data-icon="check" id="ok_btn">確認</a>
+				</div>
+			</div>
+			<div id="showmsg"></div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<h1>頁尾</h1>
+		</div>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="css/listview-grid.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<!-- 首頁 -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>首頁</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" data-icon="check">選項1</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" data-icon="check">選項2</a>
+				</div>
+				<div class="ui-block-a">
+					<a href="#" data-role="button" data-theme="b" data-icon="check">選項3</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-role="button" data-theme="b" data-icon="check">選項4</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home" class="ui-btn-active">首頁</a></li>
+					<li><a href="#product" data-icon="star">產品</a></li>
+					<li><a href="#p_list" data-icon="shop">型錄</a></li>
+					<li><a href="#news" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+	<!-- 產品 -->
+	<div data-role="page" id="product">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>產品</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<!-- pop01 -->
+			<a href="#pop01" data-rel="popup" data-position-to="window">
+				<img src="images/cake01.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="pop01" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake01.jpg" alt="">
+				<h3>品名: 起司蛋糕001</h3>
+				<h5>口味: 起司乳諾</h5>
+				<h5>價格: 50 片/元</h5>
+			</div>
+
+			<!-- pop02 -->
+			<a href="#pop02" data-rel="popup" data-position-to="window">
+				<img src="images/cake02.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="pop02" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake02.jpg" alt="">
+				<h3>品名: 起司蛋糕002</h3>
+				<h5>口味: 起司乳諾</h5>
+				<h5>價格: 50 片/元</h5>
+			</div>
+
+			<!-- pop03 -->
+			<a href="#pop03" data-rel="popup" data-position-to="window">
+				<img src="images/cake03.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="pop03" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake03.jpg" alt="">
+				<h3>品名: 起司蛋糕003</h3>
+				<h5>口味: 起司乳諾</h5>
+				<h5>價格: 50 片/元</h5>
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home">首頁</a></li>
+					<li><a href="#product" data-icon="star" class="ui-btn-active">產品</a></li>
+					<li><a href="#p_list" data-icon="shop">型錄</a></li>
+					<li><a href="#news" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+
+	<!-- 型錄 -->
+	<div data-role="page" id="p_list">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>型錄</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<div data-role="collapsible-set">
+				<div data-role="collapsible">
+					<h3>商品001介紹</h3>
+					<p>
+						<img src="images/cake01.jpg" width="49%" alt="">
+						<img src="images/cake03.jpg" width="49%" alt="">
+						<p>第一個嚴格差不多積極環節經營許可證回覆策劃重，創造父親有一學校廣播減少各類回事未知作戰星，輕鬆是從行政收入同步購買緊急文化你好預期價格，適當較
+					</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>商品002介紹</h3>
+					<p>
+						<img src="images/cake02.jpg" width="50%" alt="">
+						<p>第一個嚴格差不多積極環節經營許可證回覆策劃重，創造父親有一學校廣播減少各類回事未知作戰星，輕鬆是從行政收入同步購買緊急文化你好預期價格，適當較大所在感興趣結束依然其實有時所以快車根本，機器下載地址更。</p>
+						<img src="images/bday01_1.jfif" width="100%" alt="">
+					</p>
+				</div>				
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="b">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#home" data-icon="home">首頁</a></li>
+					<li><a href="#product" data-icon="star">產品</a></li>
+					<li><a href="#p_list" data-icon="shop" class="ui-btn-active">型錄</a></li>
+					<li><a href="#news" data-icon="info">最新消息</a></li>
+				</ul>
+			</div>
+		</div>	
+	</div>
+
+	<!-- 最新消息 -->
+	<div data-role="page" id="news" class="my-page">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#" data-rel="back" data-theme="a" data-icon="back" data-iconpos="notext">Back</a>
+			<h1>最新消息</h1>
+			<a href="#home" data-theme="a" data-icon="home" data-iconpos="notext">Home</a>
+		</div>
+		<div role="main" class="ui-content">
+			<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="請輸入標題!!" data-theme="b">
+				<li>
+					<a href="#">
+						<img src="images/bday01_1.jfif" class="ui-li-thumb" alt="">
+						<h2>酒店記憶在這個限制情_最新消息</h2>
+						<p>超好吃的起司蛋糕</p>
+						<p class="ui-li-aside">蛋糕</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/bday02_1.jfif" class="ui-li-thumb" alt="">
+						<h2>酒店記憶在這個限制情_最新消息</h2>
+						<p>超好吃的起司蛋糕</p>
+						<p class="ui-li-aside">蛋糕</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/bday03_1.jfif" class="ui-li-thumb" alt="">
+						<h2>酒店記憶在這個限制情_最新消息</h2>
+						<p>超好吃的起司蛋糕</p>
+						<p class="ui-li-aside">蛋糕</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/bday04_1.jfif" class="ui-li-thumb" alt="">
+						<h2>酒店記憶在這個限制情_最新消息</h2>
+						<p>超好吃的起司蛋糕</p>
+						<p class="ui-li-aside">蛋糕</p>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/bday05_1.jfif" class="ui-li-thumb" alt="">
+						<h2>酒店記憶在這個限制情_最新消息</h2>
+						<p>超好吃的起司蛋糕</p>
+						<p class="ui-li-aside">蛋糕</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

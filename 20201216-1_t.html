@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<script src="js/jquery-2.1.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<!-- home -->
+	<div data-role="page" id="home">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>首頁</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<a href="#product" data-role="button" data-theme="b">產品介紹</a>
+			<a href="#about" data-role="button" data-theme="b" data-rel="dialog">公司介紹</a>
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+
+	<!-- product -->
+	<div data-role="page" id="product">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-theme="a" data-rel="back">返回</a>
+			<h1>產品介紹</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<!-- cake_pop01 -->
+			<a href="#cake_pop01" data-rel="popup" data-position-to="window">
+				<img src="images/cake01.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="cake_pop01" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake01.jpg" alt="">
+				<p>產品名稱: 起司蛋糕</p>
+				<p>原料: 奶油, 起司</p>
+				<p>價格: 99元/片</p>
+			</div>
+
+			<!-- cake_pop02 -->
+			<a href="#cake_pop02" data-rel="popup" data-position-to="window">
+				<img src="images/cake02.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="cake_pop02" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake02.jpg" alt="">
+				<p>產品名稱: 起司蛋糕002</p>
+				<p>原料: 奶油, 起司</p>
+				<p>價格: 99元/片</p>
+			</div>
+
+			<!-- cake_pop03 -->
+			<a href="#cake_pop03" data-rel="popup" data-position-to="window">
+				<img src="images/cake03.jpg" width="32.5%" alt="">
+			</a>
+			<div data-role="popup" id="cake_pop03" data-dismissible="false">
+				<a href="#" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right" data-rel="back">close</a>
+				<img src="images/cake03.jpg" alt="">
+				<p>產品名稱: 起司蛋糕003</p>
+				<p>原料: 奶油, 起司</p>
+				<p>價格: 99元/片</p>
+			</div>
+			
+
+
+
+		</div>
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<h1>頁尾</h1>
+		</div>
+	</div>
+
+	<!-- about -->
+	<div data-role="page" id="about">
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>公司介紹</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<img src="images/car02.png" width="100%" alt="">
+			<h4>地址: 無奈那是你們金額百萬</h4>
+			<h4>電話: 0423592181</h4>
+			<h4>email: Lorem ipsum dolor sit amet consectetur.</h4>
+		</div>
+	</div>
+</body>
+</html>
